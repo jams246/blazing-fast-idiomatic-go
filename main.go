@@ -28,7 +28,7 @@ func main() {
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, apiURL, nil)
 	if err != nil {
-		log.Fatalf("Failed to create idiomatic request: %v", err)
+		log.Fatalf("failed to create idiomatic request: %v", err)
 	}
 
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
@@ -36,7 +36,7 @@ func main() {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("Request wasn't blazing fast enough: %v", err)
+		log.Fatalf("request wasn't blazing fast enough: %v", err)
 	}
 	defer resp.Body.Close()
 
@@ -46,7 +46,7 @@ func main() {
 
 	body, err := io.ReadAll(io.LimitReader(resp.Body, 1<<20)) // 1MB is plenty
 	if err != nil {
-		log.Fatalf("Failed to read idiomatically: %v", err)
+		log.Fatalf("failed to read idiomatically: %v", err)
 	}
 
 	var result SearchResponse
